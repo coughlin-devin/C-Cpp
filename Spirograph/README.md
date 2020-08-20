@@ -1,4 +1,5 @@
 "Draw a Spirograph"\
+"Compile Command: g++ main.cpp spirograph.cpp formula.cpp displaytext.cpp -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 -o spirograph.exe"\
 "ANGLE_OF_ROTATION should be double (2 should be input as 2.0)"\
 /* TODO:
 make a src folder inside Spirograph
