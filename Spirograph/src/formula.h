@@ -4,7 +4,7 @@
 #include <graphics.h>
 #include <math.h>
 
-#define X_CENTER 950
+#define X_CENTER 475
 #define Y_CENTER 500
 
 double rotation(int R, int r, double theta);
