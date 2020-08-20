@@ -15,6 +15,8 @@ int main(int argc, char const *argv[]) {
     exit(1);               /* return with error code */
   }
 
+//from devin account
+
   /* create a spirograph */
   /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
   Spirograph sp_graph = Spirograph(500, 355, 200, 2.0);
