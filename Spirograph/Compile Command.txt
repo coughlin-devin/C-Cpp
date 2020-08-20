@@ -1,0 +1,10 @@
+directory path:
+cd projects/c~c++/sprirograph/src
+
+
+graphics.h compilation command:
+NOTE: backup command
+g++ main.cpp -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 -o spirograph.exe
+
+NOTE: current command
+g++ main.cpp spirograph.cpp formula.cpp displaytext.cpp -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32 -o spirograph.exe
