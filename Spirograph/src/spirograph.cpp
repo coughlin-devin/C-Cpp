@@ -1,6 +1,5 @@
 #include "spirograph.h"
 
-/* OPTIMIZE: add private and public modifiers */
 /* Constructor */
 Spirograph::Spirograph (int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) {
     this->outer_circle_radius = outer_circle_radius;
