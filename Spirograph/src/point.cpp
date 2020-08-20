@@ -3,7 +3,6 @@
 class Point {
 private:
   /* data */
-  int x;
 
 public:
   Point (arguments) {};
