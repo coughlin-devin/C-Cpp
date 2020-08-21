@@ -25,7 +25,7 @@ void clearstr(char* str) {
 char* formatdate(char* file_name, char* time_buffer) {
 
   /* generate time */
-  time_t now; = time(&now);
+  time_t now = time(&now);
   tm* ltm = localtime(&now);
 
   /* create file_name */
