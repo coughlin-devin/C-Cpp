@@ -1,5 +1,6 @@
 #include "spirograph.h"
 #include "displaytext.h"
+#include "saveimage.h"
 
 int main(int argc, char const *argv[]) {
 
@@ -15,40 +16,36 @@ int main(int argc, char const *argv[]) {
     exit(1);               /* return with error code */
   }
 
-  /* create a spirograph */
-  /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
-  Spirograph sp_graph = Spirograph(500, 355, 200, 2.0);
-
+  /* define variables */
+  Spirograph sp_graph = Spirograph(500, 355, 200, 2.0);  /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
   const double resolution_rate = 0.01;
   int pen_color = LIGHTBLUE;
+  char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
+  char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
 
   /* set pen color */
   setcolor(pen_color);
 
-  /* display text */
-  displaytext(sp_graph, resolution_rate, pen_color);
+  for (size_t i = 0; i < 10; i++) {
 
-  /* draw */
-  sp_graph.draw(resolution_rate);
+    /* display text */
+    displaytext(sp_graph, resolution_rate, pen_color);
 
-  char file_name[16];
-  char copy[8];
-  const char* file_extension = ".bmp";
-  strcpy(file_name, "image");
-  char copy[8];
-  char path[100] = "C:/Users/Devin Coughlin/Desktop/Spirograph Images/";
+    /* draw */
+    sp_graph.draw(resolution_rate);
 
-/* NOTE: need to clear strings each loop */
-  for (int i = 0; i < 10; i++) {
-    sprintf(copy, "%d", i);
-    strcat(file_name, copy);
-    strcat(file_name, file_extension);
-    writeimagefile(file_name);
-    strcat(path, file_name);
-    rename(file_name, path);
+    /* save image to folder */
+    saveimage(path, file_name);
+
+    /* refresh */
+    delay(30);
+    cleardevice();
+    sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 19);
   }
 
   /* clean up */
+  free(path);
+  free(file_name);
   getch();
   closegraph();
 
