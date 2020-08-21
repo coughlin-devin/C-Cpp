@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
   for (size_t i = 0; i < 10; i++) {
 
     /* display text */
-    displaytext(sp_graph, resolution_rate, pen_color);
+    displaytext(sp_graph, resolution_rate);
 
     /* draw */
     sp_graph.draw(resolution_rate);
