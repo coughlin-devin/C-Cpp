@@ -28,7 +28,6 @@ void displaytext(Spirograph sp_graph, double resolution_rate) {
   outtextxy(X_TEXT, Y_TEXT + 2*textheight(R_info), angle_info);
   outtextxy(X_TEXT, Y_TEXT + 3*textheight(R_info), res_info);
   outtextxy(X_TEXT, Y_TEXT + 4*textheight(R_info), path_info);
-  outtextxy(X_TEXT, Y_TEXT + 5*textheight(R_info), color_info);
 
   /* NOTE: adjust text x position with textwidth() function */
   outtextxy(X_TEXT + textwidth(R_info), Y_TEXT, outer_r);

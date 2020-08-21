@@ -22,12 +22,13 @@ int main(int argc, char const *argv[]) {
   int pen_color = LIGHTBLUE;
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
+  char* time_buffer = (char*) calloc(TIME_BUFFER_SIZE, sizeof(char));
+  const int num_graphs = 5;
 
   /* set pen color */
   setcolor(pen_color);
 
-  for (size_t i = 0; i < 10; i++) {
-
+  for (size_t i = 0; i < num_graphs; i++) {
     /* display text */
     displaytext(sp_graph, resolution_rate);
 
@@ -35,7 +36,7 @@ int main(int argc, char const *argv[]) {
     sp_graph.draw(resolution_rate);
 
     /* save image to folder */
-    saveimage(path, file_name);
+    saveimage(path, file_name, time_buffer);
 
     /* refresh */
     delay(30);
@@ -46,7 +47,9 @@ int main(int argc, char const *argv[]) {
   /* clean up */
   free(path);
   free(file_name);
-  getch();
+  free(time_buffer);
+  delay(50);
+  //getch();
   closegraph();
 
   return 0;

@@ -9,9 +9,12 @@
 
 #define FOLDER_PATH_NAME "C:/Users/Devin Coughlin/Desktop/Spirograph Images/"
 #define FILE_EXTENSION ".bmp"
-#define FOLDER_PATH_SIZE 80
-#define FILENAME_SIZE 30
+#define FOLDER_PATH_SIZE 100
+#define FILENAME_SIZE 50
+#define TIME_BUFFER_SIZE 20
 
-void saveimage(char* path, char* file_name);
+void saveimage(char* path, char* file_name, char* time_buffer);
+void clearstr(char* str);
+char* formatdate(char* file_name, char* time_buffer);
 
 #endif

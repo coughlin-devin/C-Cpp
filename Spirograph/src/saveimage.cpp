@@ -1,20 +1,13 @@
 #include "saveimage.h"
 
-void clearstr(char* str);
+  void saveimage(char* path, char* file_name, char* time_buffer) {
 
-void saveimage(char* path, char* file_name) {
-
-  /* generate time */
-  time_t now;
-  char* date = ctime(&now);             /* NOTE: string formtat: weekday month day hr:min:sec year */ //25 chars long
-
-  /* create file_name */
-  strcpy(file_name, date);              /* copy date string into file_name */
+  file_name = formatdate(file_name, time_buffer);
   strcat(file_name, FILE_EXTENSION);    /* append .bmp to file_name */
 
   /* create image file and move it into dest folder */
   writeimagefile(file_name);            /* write image to .bmp file in src directory */
-  strcpy(path, FOLDER_PATH_NAME);            /* copy dest folder path into path */
+  strcpy(path, FOLDER_PATH_NAME);       /* copy dest folder path into path */
   strcat(path, file_name);              /* append image file to folder path */
   rename(file_name, path);              /* move file to folder by renaming the path */
 
@@ -27,4 +20,18 @@ void clearstr(char* str) {
   while (*(str + index*sizeof(char)) != 0) {
     *(str + index*sizeof(char)) = 0;
   }
+}
+
+char* formatdate(char* file_name, char* time_buffer) {
+
+  /* generate time */
+  time_t now; = time(&now);
+  tm* ltm = localtime(&now);
+
+  /* create file_name */
+  strftime(time_buffer, TIME_BUFFER_SIZE, "%m-%d-%Y_%H.%M.%S", ltm);
+  strcpy(file_name, time_buffer);
+  clearstr(time_buffer);
+
+  return file_name;
 }
