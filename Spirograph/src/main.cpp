@@ -1,11 +1,12 @@
 #include "spirograph.h"
 #include "displaytext.h"
+#include "saveimage.h"
 
 int main(int argc, char const *argv[]) {
 
   /* initialize graphics window */
   int error_code;
-  initwindow(1900, 1000, "Spirograph");
+  initwindow(950, 1000, "Spirograph");
   error_code = graphresult();
 
   if (error_code != grOk) { /* an error occurred */
@@ -15,25 +16,43 @@ int main(int argc, char const *argv[]) {
     exit(1);               /* return with error code */
   }
 
-
-  /* create a spirograph */
-  /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
-  Spirograph sp_graph = Spirograph(500, 355, 200, 2.0);
-
-  double resolution_rate = 0.01;
-  int pen_color = 4;
+  /* define variables */
+  Spirograph sp_graph = Spirograph(500, 355, 200, 2.0);  /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
+  const double resolution_rate = 0.01;
+  int pen_color = LIGHTBLUE;
+  char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
+  char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
+  char* time_buffer = (char*) calloc(TIME_BUFFER_SIZE, sizeof(char));
+  const int num_graphs = 5;
 
   /* set pen color */
   setcolor(pen_color);
 
-  /* display text */
-  displaytext(sp_graph, resolution_rate, pen_color);
+  for (size_t i = 0; i < num_graphs; i++) {
 
-  /* draw */
-  sp_graph.draw(resolution_rate);
+    /* OPTIMIZE: rework displaytext to be more efficient in a loop */
+    /* display text */
+    displaytext(sp_graph, resolution_rate);
+
+    /* draw */
+    sp_graph.draw(resolution_rate);
+
+    /* save image to folder */
+    saveimage(path, file_name, time_buffer);
+
+    /* refresh */
+    delay(10);
+    cleardevice();
+    /* IDEA: play around with changing the variables and look for patterns I can use to get a run of cool spirographs with a meaningful relationship */
+    sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 19);
+  }
 
   /* clean up */
-  getch();
+  free(path);
+  free(file_name);
+  free(time_buffer);
+  delay(50);
+  //getch();
   closegraph();
 
   return 0;

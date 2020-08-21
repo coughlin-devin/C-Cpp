@@ -8,7 +8,7 @@
 #define X_TEXT 20
 #define Y_TEXT 20
 
-void displaytext(Spirograph sp_graph, double resolution_rate, int pen_color);
+void displaytext(Spirograph sp_graph, double resolution_rate);
 char* getcolorname(int color);
 
 #endif
