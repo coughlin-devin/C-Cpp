@@ -29,6 +29,8 @@ int main(int argc, char const *argv[]) {
   setcolor(pen_color);
 
   for (size_t i = 0; i < num_graphs; i++) {
+
+    /* OPTIMIZE: rework displaytext to be more efficient in a loop */
     /* display text */
     displaytext(sp_graph, resolution_rate);
 
@@ -39,8 +41,9 @@ int main(int argc, char const *argv[]) {
     saveimage(path, file_name, time_buffer);
 
     /* refresh */
-    delay(30);
+    delay(10);
     cleardevice();
+    /* IDEA: play around with changing the variables and look for patterns I can use to get a run of cool spirographs with a meaningful relationship */
     sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 19);
   }
 
