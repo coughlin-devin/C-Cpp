@@ -73,7 +73,7 @@ int main(int argc, char const *argv[]) {
   free(path);
   free(file_name);
   free(time_buffer);
-  delay(50);
+  delay(20);
   //getch();
   closegraph();
 
