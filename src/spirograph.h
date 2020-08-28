@@ -3,6 +3,11 @@
 
 #include "formula.h"
 
+#define OUTER_CIRCLE_RADIUS 501
+#define INNER_CIRCLE_RADIUS 302
+#define PATH_RADIUS 200
+#define ANGLE_OF_ROTATION 2.0
+
 class Spirograph {
 private:
   int outer_circle_radius;
