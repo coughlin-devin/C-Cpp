@@ -60,7 +60,7 @@ int main(int argc, char const *argv[]) {
     sp_graph.draw(resolution_rate);
 
     /* save image to folder */
-    //saveimage(path, file_name, time_buffer);
+    saveimage(path, file_name, time_buffer);
 
     /* refresh */
     delay(10); //delay 10 milliseconds
@@ -74,7 +74,7 @@ int main(int argc, char const *argv[]) {
   free(file_name);
   free(time_buffer);
   delay(50);
-  getch();
+  //getch();
   closegraph();
 
   return 0;
