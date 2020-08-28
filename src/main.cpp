@@ -24,9 +24,6 @@ int main(int argc, char const *argv[]) {
   switch(argc) {
     case 1:
       break;
-    case 2:
-      r = atoi(argv[1]);
-      break;
     case 3:
       R = atoi(argv[1]);
       r = atoi(argv[2]);
