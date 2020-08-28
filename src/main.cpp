@@ -49,11 +49,12 @@ int main(int argc, char const *argv[]) {
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
   char* time_buffer = (char*) calloc(TIME_BUFFER_SIZE, sizeof(char));
+  char* index_buffer = (char*) calloc(INDEX_BUFFER_SIZE, sizeof(char));
 
   /* set pen color */
   setcolor(pen_color);
 
-  const int num_graphs = 6;
+  const int num_graphs = 10;
   for (size_t i = 0; i < num_graphs; i++) {
 
     /* OPTIMIZE: rework displaytext to be more efficient in a loop */
@@ -64,7 +65,8 @@ int main(int argc, char const *argv[]) {
     sp_graph.draw(resolution_rate);
 
     /* save image to folder */
-    saveimage(path, file_name, time_buffer);
+    sprintf(index_buffer, "%d", i);
+    saveimage(path, file_name, time_buffer, index_buffer);
 
     /* refresh */
     //delay(10); //delay 10 milliseconds
@@ -77,6 +79,7 @@ int main(int argc, char const *argv[]) {
   free(path);
   free(file_name);
   free(time_buffer);
+  free(index_buffer);
   delay(20);
   //getch();
   closegraph();
