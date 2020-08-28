@@ -1,8 +1,10 @@
 #include "saveimage.h"
 
-  void saveimage(char* path, char* file_name, char* time_buffer) {
+  void saveimage(char* path, char* file_name, char* time_buffer, char* index_buffer) {
 
   file_name = formatdate(file_name, time_buffer);
+  /* NOTE: index_buffer full with index */
+  strcat(file_name, index_buffer);
   strcat(file_name, FILE_EXTENSION);    /* append .bmp to file_name */
 
   /* create image file and move it into dest folder */
@@ -13,6 +15,7 @@
 
   clearstr(path);
   clearstr(file_name);
+  clearstr(index_buffer);
 }
 
 void clearstr(char* str) {
@@ -29,7 +32,7 @@ char* formatdate(char* file_name, char* time_buffer) {
   tm* ltm = localtime(&now);
 
   /* create file_name */
-  strftime(time_buffer, TIME_BUFFER_SIZE, "%m-%d-%Y_%H.%M.%S", ltm);
+  strftime(time_buffer, TIME_BUFFER_SIZE, "%m-%d-%Y_%H.%M.%S_i", ltm);
   strcpy(file_name, time_buffer);
   clearstr(time_buffer);
 
