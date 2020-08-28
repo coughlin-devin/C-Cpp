@@ -2,11 +2,14 @@
 #include "displaytext.h"
 #include "saveimage.h"
 
+#define WINDOW_X 950
+#define WINDOW_Y 1000
+
 int main(int argc, char const *argv[]) {
 
   /* initialize graphics window */
   int error_code;
-  initwindow(950, 1000, "Spirograph");
+  initwindow(WINDOW_X, WINDOW_Y, "Spirograph");
   error_code = graphresult();
 
   if (error_code != grOk) { /* an error occurred */
@@ -29,9 +32,13 @@ int main(int argc, char const *argv[]) {
       r = atoi(argv[2]);
       break;
     default:
-      printf("Invalid command line arguments.\n");
-      printf("Valid arguments: spirograph <outer radius (int)> <inner radius (int)> \n");
-      break;
+      char* invalid_message = "Invalid arguments";
+      setcolor(GREEN);
+      outtextxy(WINDOW_X/3, WINDOW_Y/2, invalid_message);
+      outtextxy(WINDOW_X/3, WINDOW_Y/2 + textheight(invalid_message), "Valid arguments: spirograph <outer radius> <inner radius>");
+      outtextxy(WINDOW_X/3, WINDOW_Y/2 + 2*textheight(invalid_message), "Exiting in 5 seconds");
+      delay(5000);
+      exit(1);
   }
 
   /* define variables */
@@ -42,11 +49,12 @@ int main(int argc, char const *argv[]) {
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
   char* time_buffer = (char*) calloc(TIME_BUFFER_SIZE, sizeof(char));
+  char* index_buffer = (char*) calloc(INDEX_BUFFER_SIZE, sizeof(char));
 
   /* set pen color */
   setcolor(pen_color);
 
-  const int num_graphs = 6;
+  const int num_graphs = 10;
   for (size_t i = 0; i < num_graphs; i++) {
 
     /* OPTIMIZE: rework displaytext to be more efficient in a loop */
@@ -57,10 +65,11 @@ int main(int argc, char const *argv[]) {
     sp_graph.draw(resolution_rate);
 
     /* save image to folder */
-    saveimage(path, file_name, time_buffer);
+    sprintf(index_buffer, "%d", i);
+    saveimage(path, file_name, time_buffer, index_buffer);
 
     /* refresh */
-    delay(10); //delay 10 milliseconds
+    //delay(10); //delay 10 milliseconds
     cleardevice();
     /* IDEA: play around with changing the variables and look for patterns I can use to get a run of cool spirographs with a meaningful relationship */
     sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 29);
@@ -70,6 +79,7 @@ int main(int argc, char const *argv[]) {
   free(path);
   free(file_name);
   free(time_buffer);
+  free(index_buffer);
   delay(20);
   //getch();
   closegraph();

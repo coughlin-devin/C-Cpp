@@ -5,15 +5,15 @@
 #include <string.h>
 #include <graphics.h>
 #include <time.h>
-/* TODO: add time so that I create the image files with date as name */
 
-#define FOLDER_PATH_NAME "C:/Users/Devin Coughlin/Desktop/Spirograph Images/"
-#define FILE_EXTENSION ".bmp"
-#define FOLDER_PATH_SIZE 74
-#define FILENAME_SIZE 20 
-#define TIME_BUFFER_SIZE 20
+#define FOLDER_PATH_NAME "C:/Users/Devin Coughlin/Desktop/Spirograph Images/" //50
+#define FILE_EXTENSION ".bmp" //4
+#define TIME_BUFFER_SIZE 22
+#define INDEX_BUFFER_SIZE 3
+#define FILENAME_SIZE TIME_BUFFER_SIZE + INDEX_BUFFER_SIZE
+#define FOLDER_PATH_SIZE FILENAME_SIZE + 54 + 1
 
-void saveimage(char* path, char* file_name, char* time_buffer);
+void saveimage(char* path, char* file_name, char* time_buffer, char* index_buffer);
 void clearstr(char* str);
 char* formatdate(char* file_name, char* time_buffer);
 
