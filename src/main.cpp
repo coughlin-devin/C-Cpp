@@ -24,12 +24,9 @@ int main(int argc, char const *argv[]) {
   switch(argc) {
     case 1:
       break;
-    case 2:
-      r = atoi(argv[1]);
-      break;
     case 3:
-      R = atoi(argv[2]);
-      r = atoi(argv[1]);
+      R = atoi(argv[1]);
+      r = atoi(argv[2]);
       break;
     default:
       printf("Invalid command line arguments.\n");
@@ -40,7 +37,7 @@ int main(int argc, char const *argv[]) {
   /* define variables */
   /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
   Spirograph sp_graph = Spirograph(R, r, PATH_RADIUS, ANGLE_OF_ROTATION);
-  const double resolution_rate = 0.01;
+  const double resolution_rate = 0.1;
   int pen_color = LIGHTBLUE;
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
