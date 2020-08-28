@@ -2,11 +2,14 @@
 #include "displaytext.h"
 #include "saveimage.h"
 
+#define WINDOW_X 950
+#define WINDOW_Y 1000
+
 int main(int argc, char const *argv[]) {
 
   /* initialize graphics window */
   int error_code;
-  initwindow(950, 1000, "Spirograph");
+  initwindow(WINDOW_X, WINDOW_Y, "Spirograph");
   error_code = graphresult();
 
   if (error_code != grOk) { /* an error occurred */
@@ -29,9 +32,13 @@ int main(int argc, char const *argv[]) {
       r = atoi(argv[2]);
       break;
     default:
-      printf("Invalid command line arguments.\n");
-      printf("Valid arguments: spirograph <outer radius (int)> <inner radius (int)> \n");
-      break;
+      char* invalid_message = "Invalid arguments";
+      setcolor(GREEN);
+      outtextxy(WINDOW_X/3, WINDOW_Y/2, invalid_message);
+      outtextxy(WINDOW_X/3, WINDOW_Y/2 + textheight(invalid_message), "Valid arguments: spirograph <outer radius> <inner radius>");
+      outtextxy(WINDOW_X/3, WINDOW_Y/2 + 2*textheight(invalid_message), "Exiting in 5 seconds");
+      delay(5000);
+      exit(1);
   }
 
   /* define variables */
@@ -60,7 +67,7 @@ int main(int argc, char const *argv[]) {
     saveimage(path, file_name, time_buffer);
 
     /* refresh */
-    delay(10); //delay 10 milliseconds
+    //delay(10); //delay 10 milliseconds
     cleardevice();
     /* IDEA: play around with changing the variables and look for patterns I can use to get a run of cool spirographs with a meaningful relationship */
     sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 29);
