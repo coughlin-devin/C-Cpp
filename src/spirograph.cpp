@@ -1,4 +1,4 @@
-#include "spirograph.h"
+#include "spirograph.hpp"
 
 /* Constructor */
 Spirograph::Spirograph (int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) {
@@ -22,4 +22,11 @@ void Spirograph::draw(double resolution_rate) {
     lineto(getx(R, r, d, theta), gety(R, r, d, theta));
     theta += resolution_rate;
   }
+}
+
+/* increment one or more of the radii by the passed values*/
+void Spirograph::incrementRadii(int rout, int rin, int rpath) {
+  this->set_outer_circle_radius(this->get_outer_circle_radius() + rout);
+  this->set_inner_circle_radius(this->get_inner_circle_radius() + rin);
+  this->set_path_radius(this->get_path_radius() + rpath);
 }

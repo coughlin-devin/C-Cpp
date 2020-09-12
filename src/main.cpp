@@ -1,6 +1,6 @@
-#include "spirograph.h"
-#include "displaytext.h"
-#include "saveimage.h"
+#include "spirograph.hpp"
+#include "displaytext.hpp"
+#include "saveimage.hpp"
 
 #define WINDOW_X 950
 #define WINDOW_Y 1000
@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]) {
   /* define variables */
   /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
   Spirograph sp_graph = Spirograph(R, r, d, ANGLE_OF_ROTATION);
-  const double resolution_rate = 0.1;
+  const double resolution_rate = 0.01;
   int pen_color = LIGHTBLUE;
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
@@ -78,7 +78,7 @@ int main(int argc, char const *argv[]) {
     //delay(10); //delay 10 milliseconds
     cleardevice();
     /* IDEA: play around with changing the variables and look for patterns I can use to get a run of cool spirographs with a meaningful relationship */
-    sp_graph.set_inner_circle_radius(sp_graph.get_inner_circle_radius() + 29);
+    sp_graph.incrementRadii(10, 5, -2);
   }
 
   /* clean up */

@@ -1,4 +1,4 @@
-#include "saveimage.h"
+#include "saveimage.hpp"
 
   void saveimage(char* path, char* file_name, char* time_buffer, char* index_buffer) {
 

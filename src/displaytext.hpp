@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <graphics.h>
-#include "spirograph.h"
+#include "spirograph.hpp"
 
 #define X_TEXT 20
 #define Y_TEXT 20

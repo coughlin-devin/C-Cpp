@@ -1,7 +1,7 @@
 #ifndef Spirograph_H_
 #define Spirograph_H_
 
-#include "formula.h"
+#include "formula.hpp"
 
 #define OUTER_CIRCLE_RADIUS 493
 #define INNER_CIRCLE_RADIUS 211
@@ -16,10 +16,14 @@ private:
   double angle_of_rotation;
 
 public:
-  Spirograph (int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation);
+  Spirograph();
+  Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation);
 
   /* draw the spirograph */
   void draw(double resolution_rate);
+
+  /* increment one or more of the radii by the passed values*/
+  void incrementRadii(int rout, int rin, int rpath);
 
   /* Setters */
   void set_outer_circle_radius(int radius) {

@@ -1,4 +1,4 @@
-#include "formula.h"
+#include "formula.hpp"
 
 /* returns the angle rotation */
 double rotation(int R, int r, double theta) {

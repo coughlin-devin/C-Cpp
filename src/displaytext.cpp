@@ -1,4 +1,4 @@
-#include "displaytext.h"
+#include "displaytext.hpp"
 
 void displaytext(Spirograph sp_graph, double resolution_rate) {
 
