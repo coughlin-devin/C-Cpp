@@ -23,6 +23,7 @@ int main(int argc, char const *argv[]) {
 
   int R = OUTER_CIRCLE_RADIUS;
   int r = INNER_CIRCLE_RADIUS;
+  int d = PATH_RADIUS;
 
   switch(argc) {
     case 1:
@@ -31,11 +32,16 @@ int main(int argc, char const *argv[]) {
       R = atoi(argv[1]);
       r = atoi(argv[2]);
       break;
+    case 4:
+    R = atoi(argv[1]);
+    r = atoi(argv[2]);
+    d = atoi(argv[3]);
+    break;
     default:
       char* invalid_message = "Invalid arguments";
       setcolor(GREEN);
       outtextxy(WINDOW_X/3, WINDOW_Y/2, invalid_message);
-      outtextxy(WINDOW_X/3, WINDOW_Y/2 + textheight(invalid_message), "Valid arguments: spirograph <outer radius> <inner radius>");
+      outtextxy(WINDOW_X/3, WINDOW_Y/2 + textheight(invalid_message), "Valid arguments: spirograph <outer radius> <inner radius> <path radius>");
       outtextxy(WINDOW_X/3, WINDOW_Y/2 + 2*textheight(invalid_message), "Exiting in 5 seconds");
       delay(5000);
       exit(1);
@@ -43,7 +49,7 @@ int main(int argc, char const *argv[]) {
 
   /* define variables */
   /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
-  Spirograph sp_graph = Spirograph(R, r, PATH_RADIUS, ANGLE_OF_ROTATION);
+  Spirograph sp_graph = Spirograph(R, r, d, ANGLE_OF_ROTATION);
   const double resolution_rate = 0.1;
   int pen_color = LIGHTBLUE;
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
