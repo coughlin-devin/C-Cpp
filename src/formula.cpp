@@ -32,6 +32,6 @@ int getx(int R, int r, int d, double theta) {
 
 /* y position of the pen */
 int gety(int R, int r, int d, double theta) {
-  double y = (R - r)*sin(theta) + d*sin((R - r)*theta / r);
+  double y = (R - r)*sin(theta) - d*sin((R - r)*theta / r);
   return (int) y + Y_CENTER;
 }
