@@ -1,5 +1,5 @@
-#ifndef Spirograph_H_
-#define Spirograph_H_
+#ifndef SPIROGRAPH_H_
+#define SPIROGRAPH_H_
 
 #include "formula.hpp"
 

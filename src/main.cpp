@@ -51,7 +51,7 @@ int main(int argc, char const *argv[]) {
   /* NOTE: Constructor looks like Spirograph(int outer_circle_radius, int inner_circle_radius, int path_radius, double angle_of_rotation) */
   Spirograph sp_graph = Spirograph(R, r, d, ANGLE_OF_ROTATION);
   const double resolution_rate = 0.01;
-  int pen_color = LIGHTBLUE;
+  int pen_color = RED;
   char* path = (char*) calloc(FOLDER_PATH_SIZE, sizeof(char));
   char* file_name = (char*) calloc(FILENAME_SIZE, sizeof(char));
   char* time_buffer = (char*) calloc(TIME_BUFFER_SIZE, sizeof(char));
